@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/base"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckSpeed">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#DADADA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:fontFamily="@font/kelly_slab"
+            android:text="RoboReader"
+            android:textColor="#591919"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:onClick="onBackClick"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_address_back_icon_icons_com_54065" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/startLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/kelly_slab"
+            android:text="После того как вы нажмете начать, на экран будет выведен текст. Читайте его с комфортной для вас скоростью. Как только вы закончите, нажмите кнопку стоп. После чего вы перейдете к блоку с вопросами."
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/kelly_slab"
+            android:onClick="onStartClick"
+            android:text="Начать"
+            android:textColor="#591919"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/textLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <TextView
+            android:id="@+id/textViewtext"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/kelly_slab"
+            android:overScrollMode="ifContentScrolls"
+            android:text="Шерлок Холмс в одном из своих рассказов дал следующую характеристику памяти: «Я считаю, что человеческий мозг — это маленький пустой чердак, и вы должны его обставить выбранной мебелью. Ошибочно думают, что у комнаты эластичные стены. От нее зависит, как скоро наступит время забывания того, что вы знали раньше, при каждом новом поступлении информации». Индивидуальный опыт человека можно назвать его памятью. Ваши друзья помнят одно, а вы — совсем другое. Любые воспоминания отличаются друг от друга. Ведь не зря говорят, что память — это искажение действительности, а не ее отражение.  С помощью памяти мы воспринимаем и понимаем окружающий мир, ориентируемся в пространстве, сохраняем и используем определенные знания и навыки. Потеря человеком памяти всегда была равносильна безумию.  Наиболее высокого уровня своего развития память достигает именно у человека. Такими мнемоническими возможностями, какими обладает он, не располагает никакое другое существо в мире. У дочеловеческих организмов есть только два вида памяти: генетическая и механическая. С помощью генетической памяти из поколения в поколение передаются жизненно необходимые качества, а механическая способствует приобретению опыта, практических навыков. Если организм уходит из жизни, вместе с ним исчезает и жизненный опыт. Общественный прогресс позволяет совершенствовать процесс запоминания у всех цивилизованных людей, улучшать его в ходе приобщения к достижениям человечества. Ученый П. П. Блонский доказал, что двигательный, аффективный, образный, логический виды памяти появились один за другим — по мере развития человечества. Память лежит в основе психической деятельности человека, в основе развития и обучения. Она играет роль связующего звена между прошлым человечества, его настоящим и будущим. Без нее невозможно понять основы формирования поведения, мышления, сознания, подсознания."
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonStop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonStop"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:onClick="onStopClick"
+            android:text="Стоп"
+            android:textColor="#591919"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textViewTime" />
+
+        <TextView
+            android:id="@+id/textViewTime"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@drawable/oval"
+            android:fontFamily="@font/kelly_slab"
+            android:gravity="center"
+            android:text="00:00"
+            android:textColor="#591919"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonStop"
+            app:layout_constraintEnd_toStartOf="@+id/buttonStop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/buttonStop" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/questionssLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/q1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/kelly_slab"
+                        android:text="Чем, по мнению Шерлока Холмса, является человеческий мозг?"
+                        android:textColor="#591919"
+                        android:textSize="25sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioGroup
+                        android:id="@+id/rg1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView10">
+
+                        <RadioButton
+                            android:id="@+id/correct1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="маленький пустой чердак" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Большой, полный чердак." />
+
+                        <RadioButton
+                            android:id="@+id/radioButton3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Небольшой, думающий горшочек." />
+                    </RadioGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/q2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView102"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/kelly_slab"
+                        android:text="Чему равносильна потеря человеком памяти?"
+                        android:textColor="#591919"
+                        android:textSize="25sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioGroup
+                        android:id="@+id/rg2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView102">
+
+                        <RadioButton
+                            android:id="@+id/correct2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="безумию" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton22"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="любви" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton32"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="потере смысла жизни" />
+                    </RadioGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/q3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView103"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/kelly_slab"
+                        android:text="Какими видами памяти обладают дочеловеческие организмы?"
+                        android:textColor="#591919"
+                        android:textSize="25sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioGroup
+                        android:id="@+id/rg3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView103">
+
+                        <RadioButton
+                            android:id="@+id/radioButton03"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="рефлексивная и визуальная" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton23"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="автоматическая и механическая" />
+
+                        <RadioButton
+                            android:id="@+id/correct3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="генетическая и механическая" />
+                    </RadioGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/q4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView104"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/kelly_slab"
+                        android:text=" доказал, что двигательный, аффективный, образный, логический виды памяти появились один за другим"
+                        android:textColor="#591919"
+                        android:textSize="25sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioGroup
+                        android:id="@+id/rg4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView104">
+
+                        <RadioButton
+                            android:id="@+id/correct4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Блонский" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton24"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Бродский" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton34"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Балконский" />
+                    </RadioGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/q5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/textView105"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/kelly_slab"
+                        android:text="Что лежит в основе психической деятельности человека?"
+                        android:textColor="#591919"
+                        android:textSize="25sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioGroup
+                        android:id="@+id/rg5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView105">
+
+                        <RadioButton
+                            android:id="@+id/radioButton05"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="сознание" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton25"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="эволюция" />
+
+                        <RadioButton
+                            android:id="@+id/correct5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="память" />
+                    </RadioGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/buttonAccept"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onAcceptClick"
+                    android:text="Button" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/resultLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/kelly_slab"
+            android:text="Ваш результат:"
+            android:textColor="#591919"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/resultWpM"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/oval"
+            android:fontFamily="@font/kelly_slab"
+            android:paddingLeft="15dp"
+            android:text="0 слов в минуту"
+            android:textColor="#591919"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/resultUnderstanding"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/oval"
+            android:fontFamily="@font/kelly_slab"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="10dp"
+            android:paddingRight="15dp"
+            android:text="Понимание: 0%"
+            android:textColor="#591919"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resultWpM" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kelly_slab"
+            android:gravity="center"
+            android:text="Вы сможете прочитать  “Войну и мир” за 56 часов, но ничего не поймете. "
+            android:textColor="#591919"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resultUnderstanding" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

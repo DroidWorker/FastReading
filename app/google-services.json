@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "409321292002",
+    "project_id": "fastreading-515a9",
+    "storage_bucket": "fastreading-515a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409321292002:android:b4a424e565a5ef1c569ebb",
+        "android_client_info": {
+          "package_name": "com.selfdev.fastreading"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409321292002-1sl88i74huo0d3g7k84lfmb7tc2pbhqo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyw0p4CTgoBUb2_DdFE94Puv1WMTHg4Jk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409321292002-1sl88i74huo0d3g7k84lfmb7tc2pbhqo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
