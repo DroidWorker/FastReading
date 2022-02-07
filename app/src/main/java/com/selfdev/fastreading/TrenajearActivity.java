@@ -1,16 +1,21 @@
 package com.selfdev.fastreading;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +23,11 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -35,6 +45,7 @@ public class TrenajearActivity extends AppCompatActivity {
     AdView myAdview;
     float iteration = 1.0f;
     String str = "";
+    int rotate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +56,7 @@ public class TrenajearActivity extends AppCompatActivity {
 
         type = getIntent().getIntExtra("TrenType", 1);
             if(type==1) {
+                ((ConstraintLayout)findViewById(R.id.ShulteSettingsLayout)).setVisibility(View.VISIBLE);
                 RadioGroup radioSize = findViewById(R.id.radioSize);
                 radioSize.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
@@ -75,7 +87,77 @@ public class TrenajearActivity extends AppCompatActivity {
                 });
             }
             else if(type==2){
+                ((ConstraintLayout)findViewById(R.id.lineOFsight)).setVisibility(View.VISIBLE);
+            }
+            else if (type==3){
+                SharedPreferences sharedPreferences = getSharedPreferences("FRconfig", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                int labiryntNo = sharedPreferences.getInt("labyryntNo", 1);
+                editor.putInt("labyryntNo", labiryntNo+1);
+                ImageView iv = findViewById(R.id.labyrynt);
+                if (labiryntNo==1) iv.setImageResource(R.drawable.lab1);
+                else if (labiryntNo==2) iv.setImageResource(R.drawable.lab2);
+                else if (labiryntNo==3) iv.setImageResource(R.drawable.lab3);
+                else if (labiryntNo==4) {
+                    editor.putInt("labyryntNo", 1);
+                    iv.setImageResource(R.drawable.lab4);
+                }
+                editor.commit();
+                ((ConstraintLayout)findViewById(R.id.labiryntLayout)).setVisibility(View.VISIBLE);
+            }
+            else if (type==4){
+                ((ConstraintLayout)findViewById(R.id.bariersLayout)).setVisibility(View.VISIBLE);
+                FirebaseDatabase database = FirebaseDatabase.getInstance("https://fastreading-515a9-default-rtdb.europe-west1.firebasedatabase.app/");
+                DatabaseReference ref = database.getReference("textes");
 
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                         int count = (int)snapshot.getChildrenCount();
+                        Random rand = new Random();
+                        String text = snapshot.child(String.valueOf(rand.nextInt(count)+1)).getValue().toString();
+                        TextView tv = findViewById(R.id.textView7);
+                        switch (1+rand.nextInt(3)){
+                            case 1://наложение решетки
+                                tv.setText(text);
+                                ((ImageView)findViewById(R.id.jail)).setVisibility(View.VISIBLE);
+                                break;
+                            case 2://нехватка букв
+                                char[] textArr = text.toCharArray();
+                                int rem = 5+rand.nextInt(5);
+                                text= "";
+                                for (int i=0; i<textArr.length; i++){
+                                    if (i!=rem){
+                                        text+=textArr[i];
+                                    }
+                                    else{
+                                        rem = 5+i+rand.nextInt(5);
+                                    }
+                                }
+                                tv.setText(text);
+                                break;
+                            case 3://поворот на 90
+                                Timer timer = new Timer();
+                                timer.scheduleAtFixedRate(new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        rotate = rand.nextInt(180);
+                                        rotate = 90-rotate;
+                                        TrenajearActivity.this.runOnUiThread(new Runnable(){
+                                            @Override
+                                            public void run() {
+                                                tv.setRotation(rotate);
+                                            }});
+                                    }
+                                }, 0, 3000);
+                                tv.setText(text);
+                                tv.setMovementMethod(new ScrollingMovementMethod());
+                                break;
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {                    }
+                });
             }
     }
 
@@ -99,7 +181,10 @@ public class TrenajearActivity extends AppCompatActivity {
     }
     void change(){
         TextView numsLine = findViewById(R.id.textViewNumsLine);
-        if (numsLine.getLineCount()>1||0.4f+(iteration/20)>1.0f) return;
+        if (numsLine.getLineCount()>1||0.4f+(iteration/20)>1.0f) {
+            numsLine.setText("");
+            return;
+        }
         ConstraintSet set = new ConstraintSet();
         ConstraintLayout cl = findViewById(R.id.lineOFsight);
         set.clone(cl);

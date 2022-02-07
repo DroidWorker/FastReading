@@ -19,6 +19,7 @@ import javax.security.auth.login.LoginException;
 public class MainActivity extends AppCompatActivity {
     AdView mAdView;
     SharedPreferences mSettings;
+    String login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         mSettings = getSharedPreferences("FRconfig", Context.MODE_PRIVATE);
-        String login = mSettings.getString("login", null);
+        login = mSettings.getString("login", null);
         if (login!=null){
             ImageButton ib = findViewById(R.id.imageButton);
             ib.setImageResource(R.drawable.ic_person_avatar_account_user_icon_cabinet);
@@ -51,8 +52,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLoginClick(View view) {
-        Intent intent = new Intent(this, Authorisation.class);
-        startActivity(intent);
+        if(login!=null){
+            Intent intent = new Intent(this, cabinetActivity.class);
+            startActivity(intent);
+        }
+        else {
+            Intent intent = new Intent(this, Authorisation.class);
+            startActivity(intent);
+        }
     }
 
     public void onBookClick(View view) {

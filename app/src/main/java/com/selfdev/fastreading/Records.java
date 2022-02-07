@@ -43,8 +43,8 @@ public class Records extends AppCompatActivity {
                 for (DataSnapshot child:snapshot.getChildren()
                      ) {
                         name = (String)(child.child("login").getValue());
-                        speed = (int)((long)(child.child("speed").getValue()));
-                        understanding = (int)((long)(child.child("understanding").getValue()));
+                        speed = (int)((long)(child.child("recordSpeed").getValue()));
+                        understanding = (int)((long)(child.child("recordUnderstanding").getValue()));
                         records.add(new Record(name, speed, understanding));
                 }
                 RecordAdapter adapter = new RecordAdapter(ctx, records);

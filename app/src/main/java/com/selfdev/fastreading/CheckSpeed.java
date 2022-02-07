@@ -1,8 +1,10 @@
 package com.selfdev.fastreading;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,8 +20,11 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class CheckSpeed extends AppCompatActivity {
 
@@ -37,14 +42,18 @@ public class CheckSpeed extends AppCompatActivity {
 
     int wPm;
     int understanding;
+    int prevRecordSpeed;
 
     FirebaseDatabase database;
     String uID;
+
+    Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_speed);
+        ctx = this;
         View view = findViewById(R.id.base);
 
         database = FirebaseDatabase.getInstance("https://fastreading-515a9-default-rtdb.europe-west1.firebasedatabase.app/");
@@ -66,6 +75,21 @@ public class CheckSpeed extends AppCompatActivity {
 
         TextView text = findViewById(R.id.textViewtext);
         text.setMovementMethod(new ScrollingMovementMethod());
+
+        //получаем предыдущий рекорд
+        DatabaseReference ref =  database.getReference("users/"+uID+"/recordSpeed");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String val =  (snapshot.getValue()).toString();
+                prevRecordSpeed = Integer.parseInt(val);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void onStartClick(View view){
@@ -116,10 +140,16 @@ public class CheckSpeed extends AppCompatActivity {
         else
             WW.setText("Вы сможете прочитать  “Войну и мир” за "+WWtime+" часов, и рассказять содержание, как это сделал бы автор. ");
 
-        DatabaseReference ref = database.getReference("users/"+uID+"/speed");
-        ref.setValue(wPm);
-        ref = database.getReference("users/"+uID+"/understanding");
-        ref.setValue(understanding);
+        //если предыдущийс рекорд меньше то перезаписываем
+        DatabaseReference ref;
+        if (prevRecordSpeed<wPm){
+            ref = database.getReference("users/"+uID+"/recordSpeed");
+            ref.setValue(wPm);
+            ref = database.getReference("users/"+uID+"/recordUnderstanding");
+            ref.setValue(understanding);
+        }
+        ref = database.getReference("users/"+uID+"/records");
+        ref.child(String.valueOf(wPm)).setValue(understanding);
     }
 
     public void onBackClick(View view)

@@ -36,10 +36,13 @@ public class TrenajearsAdapter  extends RecyclerView.Adapter<TrenajearsAdapter.V
             public void onClick(View v) {
                 Intent intent = new Intent(ctx, TrenajearActivity.class);
                 //1-таблица Шульте
-                //2-поле зрения
+                //2-
                 //3-клиновидные таблиц
                 //4-Преграды(наложение решетки, нехватка букв, поворот на 90)
-                intent.putExtra("TrenType", 1);
+                if (((TextView)view.findViewById(R.id.trenName)).getText().equals("таблица Шульте")) intent.putExtra("TrenType", 1);
+                else if (((TextView)view.findViewById(R.id.trenName)).getText().equals("клиновидные таблицы")) intent.putExtra("TrenType", 2);
+                else if (((TextView)view.findViewById(R.id.trenName)).getText().equals("лабиринт")) intent.putExtra("TrenType", 3);
+                else if (((TextView)view.findViewById(R.id.trenName)).getText().equals("Преграды")) intent.putExtra("TrenType", 4);
                 ctx.startActivity(intent);
             }
         });

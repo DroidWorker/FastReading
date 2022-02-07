@@ -33,8 +33,8 @@ public class Trenajears extends AppCompatActivity {
         RecyclerView rvList = findViewById(R.id.trenList);
         ArrayList<String> trenagers = new ArrayList<String>();
         trenagers.add("таблица Шульте");
-        trenagers.add("поле зрения");
         trenagers.add("клиновидные таблицы");
+        trenagers.add("лабиринт");
         trenagers.add("Преграды");
         TrenajearsAdapter adapter = new TrenajearsAdapter(this, trenagers);
         rvList.setAdapter(adapter);
